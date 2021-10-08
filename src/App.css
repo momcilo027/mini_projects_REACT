@@ -1,0 +1,28 @@
+.App{
+  text-align: center;
+}
+.counter_div button{
+  padding: 10px;
+  font-size: 20px;
+  margin: 5px;
+  width: 50px;
+  height: 50px;
+  background: none;
+  border: 1px solid black;
+  border-radius: 40px;
+}
+.counter_div button:hover{
+  cursor: pointer;
+  background: black;
+  color: white;
+}
+hr{
+  margin: 20px;
+}
+.list_main{
+  margin-top: 50px;
+}
+.list_main h1{
+  margin-bottom: 0;
+  padding-bottom: 0;
+}

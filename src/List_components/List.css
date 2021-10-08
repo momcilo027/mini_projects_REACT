@@ -1,0 +1,19 @@
+.team{
+  display: inline-block;
+  margin: 5px;
+}
+.team ul{
+  list-style: none;
+  list-style-image: none;
+}
+.team li{
+  text-align: left;
+  padding: 15px;
+  margin: none;
+  border-left: 2px solid black;
+}
+.team li:hover{
+  cursor: pointer;
+  background: black;
+  color: white;
+}
