@@ -35,8 +35,37 @@ function App() {
   ]
   // end of LIST
 
+  // TIC TAC TOE
+  const [board, setBoard] = useState(Array(9).fill('-'));
+  const [xIsNext, setXisNext] = useState(true);
+  const handleClick = e => {
+    setBoard([
+      board[e.target.id] = xIsNext ? "X" : "O"
+    ])
+    setBoard([...board])
+    setXisNext(!xIsNext)
+  }
+  console.log(board);
+
   return (
     <div className="App">
+      <div className="tic_tac_toe">
+        <h1>Tic Tac Toe</h1>
+        <div className="score">
+          <h1>X : </h1>
+          <h1>O : </h1>
+        </div>
+        <div className="round_winner">
+          <h1>ROUND WINNER</h1>
+          <h1>O</h1>
+        </div>
+        <div className="board">
+          {board.map((value, i) => (
+            <button key={i} id={i} className="board_btn" onClick={handleClick}>{value}</button>
+          ))}
+        </div>
+      </div>
+      <hr />
       <div className="list_main">
         <h1>List of people</h1>
         <List list={teamList} />
