@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import List from './List_components/List';
+import { Winner_arr } from './Tic_tac_toe/Winner';
 
 function App() {
 
@@ -38,26 +39,40 @@ function App() {
   // TIC TAC TOE
   const [board, setBoard] = useState(Array(9).fill('-'));
   const [xIsNext, setXisNext] = useState(true);
+  const winner = Winner_arr(board);
+  const [xWins, setXwon] = useState(0);
+  const [oWins, setOwon] = useState(0);
+  const input_val = xIsNext ? "X" : "O"
   const handleClick = e => {
     setBoard([
-      board[e.target.id] = xIsNext ? "X" : "O"
+      board[e.target.id] = input_val
     ])
     setBoard([...board])
-    setXisNext(!xIsNext)
+    setXisNext(!xIsNext);
   }
-  console.log(board);
+  const handleReset = () => {
+    setXwon(winner == "X" ? (xWins + 1) : xWins)
+    setOwon(winner == "O" ? (oWins + 1) : oWins)
+    for(var i = 0; i < 9; i++){
+      setBoard([
+        board[i] = '-'
+      ])
+      setBoard([...board])
+    }
+  }
 
   return (
     <div className="App">
       <div className="tic_tac_toe">
         <h1>Tic Tac Toe</h1>
         <div className="score">
-          <h1>X : </h1>
-          <h1>O : </h1>
+          <h1>X : {xWins}</h1>
+          <h1>O : {oWins}</h1>
         </div>
         <div className="round_winner">
           <h1>ROUND WINNER</h1>
-          <h1>O</h1>
+          <h1>{winner}</h1>
+          <button className="reset_btn" onClick={handleReset}>RESET BOARD</button>
         </div>
         <div className="board">
           {board.map((value, i) => (

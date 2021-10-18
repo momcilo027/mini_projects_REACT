@@ -58,3 +58,14 @@ hr{
   margin: 0;
   padding: 0;
 }
+.reset_btn{
+  margin: 10px;
+  padding: 10px;
+  background: none;
+  border: 1px solid black;
+
+}
+.reset_btn:hover{
+  background: black;
+  color: white;
+}
