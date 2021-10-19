@@ -69,3 +69,9 @@ hr{
   background: black;
   color: white;
 }
+.next_info{
+  color: black;
+}
+.winner_info{
+  color: red;
+}

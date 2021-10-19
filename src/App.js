@@ -48,7 +48,7 @@ function App() {
       board[e.target.id] = input_val
     ])
     setBoard([...board])
-    setXisNext(!xIsNext);
+    setXisNext(!xIsNext)
   }
   const handleReset = () => {
     setXwon(winner == "X" ? (xWins + 1) : xWins)
@@ -70,13 +70,13 @@ function App() {
           <h1>O : {oWins}</h1>
         </div>
         <div className="round_winner">
-          <h1>ROUND WINNER</h1>
-          <h1>{winner}</h1>
+          <h1 className={(winner == '-' || winner == null) ? 'next_info' : 'winner_info'}>{(winner == '-' || winner == null) ? 'NEXT ON MOVE' : 'WINNER'}</h1>
+          <h1>{(winner == '-' || winner == null) ? input_val : winner}</h1>
           <button className="reset_btn" onClick={handleReset}>RESET BOARD</button>
         </div>
         <div className="board">
           {board.map((value, i) => (
-            <button key={i} id={i} className="board_btn" onClick={handleClick}>{value}</button>
+            <button key={i} id={i} className="board_btn" onClick={(winner == '-' || winner == null) ? handleClick : null}>{value}</button>
           ))}
         </div>
       </div>
