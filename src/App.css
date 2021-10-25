@@ -75,3 +75,44 @@ hr{
 .winner_info{
   color: red;
 }
+.generate{
+  width: 20%;
+  background: none;
+  color: black;
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.generate:hover{
+  background: black;
+  color: white;
+}
+.try{
+  width: 20%;
+  background: none;
+  color: black;
+  border: 1px solid black;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.try:hover{
+  background: #2acaea;
+}
+.code{
+  width: 20%;
+  font-size: 40px;
+  text-align: center;
+  outline: none;
+  background: none;
+  border: 1px solid black;
+}
+.code:focus{
+  outline: none;
+}
+.code:hover{
+  outline: none;
+  border: 1px solid black;
+}
