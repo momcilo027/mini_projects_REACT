@@ -66,8 +66,9 @@ function App() {
 
   const [code, setCode] = useState(Array(4).fill(null));
   const [enteredValue, setEnteredValue] = useState(0);
-  const [hint, setHint] = useState('test');
+  const [hint, setHint] = useState(Array(5).fill(null));
   const [generated, setGenerated] = useState(false);
+  const [cong, setCong] = useState(null)
 
   const generate_code = () =>{
     var num1 = Math.floor(Math.random() * (0, 10))
@@ -80,23 +81,56 @@ function App() {
     setCode(code[3] = num4)
     setCode([...code])
     setGenerated(!generated)
-    console.log(code)
+
+    if(num1 > num2){
+      var one_two = num1 / num2
+      setHint(hint[2] = ("x1 / x2 = "+one_two))
+      setHint([...hint])
+    }else if(num1 < num2){
+      var two_one = num2 / num1
+      setHint(hint[2] = ("x2 / x1 = "+two_one))
+      setHint([...hint])
+    }else{
+      setHint(hint[2] = ("x1 / x2 = 0"))
+      setHint([...hint])
+    }
+
+    if(num4 > num2){
+      var four_two = num4 - num2
+      setHint(hint[4] = ("x4 - x2 = "+four_two))
+      setHint([...hint])
+    }else if(num4 < num2){
+      var two_four = num2 - num4
+      setHint(hint[4] = ("x2 - x4 = "+two_four))
+      setHint([...hint])
+    }else{
+      setHint(hint[4] = ("x4 - x2 = 0"))
+      setHint([...hint])
+    }
+
+    var sum = num1 + num2 + num3 + num4
+    var one_four = num1 + num4
+    var three_four = num3 * num4
+    setHint(hint[3] = ("x3 * x4 = "+three_four))
+    setHint(hint[0] = ("Sum of code is : "+sum))
+    setHint(hint[1] = ("x1 + x4 = "+one_four))
+    setHint([...hint])
+    setCong(null)
   }
 
   const try_and_hints = () =>{
-    var code1 = code[0]
-    var code2 = code[1]
-    var code3 = code[2]
-    var code4 = code[3]
 
     var vals = enteredValue.toString().split('').map(val => parseInt(val, 10))
-    var val1 = vals[0]
-    var val2 = vals[1]
-    var val3 = vals[2]
-    var val4 = vals[3]
 
-    if(code1 == val1){
-
+    if(code[0] == vals[0] && code[1] == vals[1] && code[2] == vals[2] && code[3] == vals[3]){
+      setCong("CONGRATULATIONS")
+      setHint(hint[0] = ("You cracked the CODE"))
+      setHint(hint[1] = null)
+      setHint(hint[2] = null)
+      setHint(hint[3] = null)
+      setHint(hint[4] = null)
+      setHint([...hint])
+      setGenerated(!generated)
     }
 
   }
@@ -109,11 +143,17 @@ function App() {
         <h1>Crack the code...</h1>
         <h1>X - X - X - X</h1>
         <button className="generate" onClick={generated ? null : generate_code}>Generate</button> <br/>
-        <input id="code" name='code' className="code" placeholder="XXXX" maxlength="4" onChange={event => setEnteredValue(event.target.value)}/> <br/>
+        <input id="code" name='code' className="code" placeholder="XXXX" maxlength="4" autocomplete="off" onChange={event => setEnteredValue(event.target.value)}/> <br/>
         <button className="try" onClick={try_and_hints}>TRY</button>
         <div>
-          <h1>HINTS</h1>
-          <h3>{hint}</h3>
+          <h1>{cong}</h1>
+          <p>
+            {hint[0]} <br/>
+            {hint[1]} <br/>
+            {hint[2]} <br/>
+            {hint[3]} <br/>
+            {hint[4]}
+          </p>
         </div>
       </div>
       <hr />
